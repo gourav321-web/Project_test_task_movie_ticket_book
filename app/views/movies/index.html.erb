@@ -1,0 +1,15 @@
+<h2>Movies</h2>
+
+<% @movies.each do |movie| %>
+  <div style="margin-bottom: 20px;">
+    <h3>
+      <%= link_to movie.title, movie_path(movie) %>
+    </h3>
+
+    <p><strong>Duration:</strong> <%= movie.duration %> minutes</p>
+
+    <% if movie.banner_image.attached? %>
+      <%= image_tag movie.banner_image, width: 200 %>
+    <% end %>
+  </div>
+<% end %>

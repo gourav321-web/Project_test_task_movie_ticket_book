@@ -1,0 +1,17 @@
+<h2>My Bookings</h2>
+
+<% if @bookings.any? %>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li>
+         <%= booking.show.movie.title %> |
+         <%= booking.show.show_time.strftime("%d %b %Y, %I:%M %p") %> |
+        Seats: <%= booking.number_of_seats %> |
+        ₹ <%= booking.total_price %> |
+        Status: <%= booking.status %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No bookings yet</p>
+<% end %>

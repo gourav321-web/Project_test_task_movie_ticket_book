@@ -1,0 +1,21 @@
+<h2>Shows for <%= @movie.title %></h2>
+
+<% if @shows.any? %>
+  <ul>
+    <% @shows.each do |show| %>
+      <li>
+         <%= show.show_time.strftime("%d %b %Y, %I:%M %p") %> |
+        Seats: <%= show.available_seats %> |
+        Price: ₹<%= show.seat_price %>
+
+        |
+        <%= link_to "Book", new_show_booking_path(show) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No shows available for this movie.</p>
+<% end %>
+
+<%= link_to "Back to Movie", movie_path(@movie) %>&nbsp;&nbsp;&nbsp;
+<%= link_to "Back to Movies", movies_path %>
