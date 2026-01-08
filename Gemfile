@@ -68,3 +68,7 @@ end
 gem "bcrypt"
 
 gem "jwt"
+
+group :development, :test do
+  gem 'byebug'
+end

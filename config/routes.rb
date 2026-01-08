@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :shows, only: [] do
-  resources :bookings, only: [:new, :create]
-end
+    resources :bookings, only: [:new, :create]
+  end
 
-resources :bookings, only: [:index]
+  resources :bookings, only: [:index]
 
 
 

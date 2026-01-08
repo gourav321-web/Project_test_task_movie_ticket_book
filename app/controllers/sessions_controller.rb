@@ -1,14 +1,15 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
-  # LOGIN PAGE
   def new
-    # empty on purpose (sirf view render karega)
   end
 
-  # LOGIN ACTION
+  # login 
   def create
     user = User.find_by(email: params[:email])
+
+    # byebug
+    
 
     if user&.authenticate(params[:password])
       token = encode_token({ user_id: user.id })
