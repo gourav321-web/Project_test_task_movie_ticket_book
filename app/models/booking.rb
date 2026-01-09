@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
   validate :seats
   before_create :totalprice
   after_create :seatremove
-  after_create :booking
+  after_create :bookingmail
 
   private
   def totalprice
@@ -12,13 +12,13 @@ class Booking < ApplicationRecord
   end
   def seats
     if number_of_seats.present? && number_of_seats > show.available_seats
-      errors.add(:number_of_seats,"seats are not present as much you entered(only #{show.available_seats} are present)")
+      errors.add(:seatnotpresent,"seats are not present as much you entered only #{show.available_seats} are present")
     end
   end
   def seatremove
     show.update!(available_seats: show.available_seats - number_of_seats)
   end
-  def booking
+  def bookingmail
     UserMailer.booking_confirmation(self).deliver_later
   end
   

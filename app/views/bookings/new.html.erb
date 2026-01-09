@@ -4,13 +4,15 @@
   Price per seat: ₹<%= @show.seat_price %><br>
   Available seats: <%= @show.available_seats %>
 </p>
+
 <% if @booking.errors.any? %>
-  <ul style="color:red">
-    <% @booking.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <% @booking.errors[:seatnotpresent].each do |message| %>
+      <div style="margin-bottom: 20px;">
+        <span style="background-color: red;"><%= message %></span>
+      </div>
     <% end %>
-  </ul>
 <% end %>
+
 <%= form_with model: [@show, @booking], local: true do |f| %>
   <div>
     <%= f.label :number_of_seats %><br>

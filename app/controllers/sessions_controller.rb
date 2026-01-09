@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to movies_path, notice: "Logged-in"
     else
       flash.now[:alert] = "wrong email and password"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   def destroy

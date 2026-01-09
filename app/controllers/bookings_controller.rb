@@ -14,8 +14,12 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path, notice: "Booking comptele"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    # yaha pr perticular movie ke show display karne ka code likhna hai 
   end
   private
   def setshow
