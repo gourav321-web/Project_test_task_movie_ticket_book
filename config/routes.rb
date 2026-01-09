@@ -5,21 +5,17 @@ Rails.application.routes.draw do
   get  "/login",  to: "sessions#new"
   post "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
   get  "/register", to: "users#new"
   post "/users",    to: "users#create"
-
-  resources :movies, only: [:index, :show]
-
+  get "/bookings", to: "bookings#index"
+  get "/movies", to: "movies#index"
+  get "/movies/:id", to: "movies#show"
   resources :movies, only: [:index, :show] do
     resources :shows, only: [:index]
   end
-
-  resources :shows, only: [] do
+  resources :shows do
     resources :bookings, only: [:new, :create]
   end
-
-  resources :bookings, only: [:index]
 
 
 
