@@ -21,7 +21,7 @@ module JwtAuthenticable
     @current_user ||= User.find_by(id: user_id)
   end
 
-  def authenticate_user!
+  def authtouser
     unless current_user
       redirect_to login_path, alert: "Please login first"
     end
