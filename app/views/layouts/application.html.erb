@@ -3,46 +3,29 @@
   <head>
     <title>BookMyShow</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Movie Ticket Booking App">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <% if flash[:notice] %>
-      <p style="color:green"><%= flash[:notice] %></p>
+      <p><%= flash[:notice] %></p>
     <% end %>
     <% if current_user %>
-  <div style="border-bottom: 1px solid #ccc; padding: 10px; display:flex; align-items:center; gap:15px;">
-    
+  <div>
     <% if current_user.profile_picture.attached? %>
-      <%= image_tag current_user.profile_picture, width: 50, height: 50, style: "border-radius:50%;" %>
+      <%= image_tag current_user.profile_picture, width: 50, height: 50 %>
     <% end %>
-
     <div>
-      <strong><%= current_user.name %></strong><br>
+      <%= current_user.name %><br>
       <small><%= current_user.email %></small>
     </div>
-
     <%= button_to "Logout", logout_path, method: :delete %>
   </div>
 <% end %>
-
     <%= yield %>
   </body>
 </html>

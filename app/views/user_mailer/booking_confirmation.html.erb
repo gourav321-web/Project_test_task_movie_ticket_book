@@ -1,17 +1,14 @@
 <h2>Booking Confirmed </h2>
-
-<p>Hello <strong><%= @user.name %></strong>,</p>
-
+<p>Hello<%=@user.name %>,</p>
 <p>
-  Your booking has been successfully confirmed.  
-  Here are the details:
+  Your ticket is booked.  
+  details:
 </p>
-
 <ul>
-  <li><strong>Movie:</strong> <%= @movie.title %></li>
-  <li><strong>Show Time:</strong> <%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %></li>
-  <li><strong>Seats:</strong> <%= @booking.number_of_seats %></li>
-  <li><strong>Total Price:</strong> ₹<%= @booking.total_price %></li>
+  <li>Movie: <%= @movie.title %></li>
+  <li>Show_time:<%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %></li>
+  <li>Seat:<%= @booking.number_of_seats %></li>
+  <li>Price:₹<%= @booking.total_price %></li>
 </ul>
 
 

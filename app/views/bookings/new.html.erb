@@ -1,14 +1,9 @@
-<h2>Book Seats</h2>
-
-
-
 <p>
-  Movie: <strong><%= @show.movie.title %></strong><br>
+  Movie:<%= @show.movie.title %><br>
   Show Time: <%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %><br>
   Price per seat: ₹<%= @show.seat_price %><br>
   Available seats: <%= @show.available_seats %>
 </p>
-
 <% if @booking.errors.any? %>
   <ul style="color:red">
     <% @booking.errors.full_messages.each do |msg| %>
@@ -16,12 +11,10 @@
     <% end %>
   </ul>
 <% end %>
-
 <%= form_with model: [@show, @booking], local: true do |f| %>
   <div>
     <%= f.label :number_of_seats %><br>
     <%= f.number_field :number_of_seats %>
   </div>
-
   <%= f.submit "Confirm Booking" %>
 <% end %>

@@ -6,7 +6,6 @@ module JwtAuthenticable
     # byebug
     JWT.encode(payload, JWT_SECRET, 'HS256')
   end
-
   def decoded_token
     token = cookies.signed[:jwt]
     return nil unless token
@@ -15,7 +14,6 @@ module JwtAuthenticable
     rescue JWT::DecodeError
      nil
   end
-
   def current_user
     return nil unless decoded_token
     # byebug

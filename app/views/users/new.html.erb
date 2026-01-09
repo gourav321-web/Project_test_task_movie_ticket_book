@@ -1,7 +1,7 @@
 <h2>Register</h2>
 
 <% if @user.errors.any? %>
-  <ul style="color:red">
+  <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
@@ -30,7 +30,7 @@
   </div>
 
   <div>
-    <%= f.submit "Create Account" %>
+    <%= f.submit "Create" %>
   </div>
 <% end %>
 

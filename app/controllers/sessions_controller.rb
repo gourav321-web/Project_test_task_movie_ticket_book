@@ -1,30 +1,20 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
-
+  skip_forgery_protection
   def new
   end
-
-  # login 
   def create
     user = User.find_by(email: params[:email])
-
-    # byebug
-    
-
     if user&.authenticate(params[:password])
       token = encode_token({ user_id: user.id })
       cookies.signed[:jwt] = { value: token, httponly: true }
-
-      redirect_to movies_path, notice: "Logged in successfully"
+      redirect_to movies_path, notice: "Logged-in"
     else
-      flash.now[:alert] = "Invalid email or password"
+      flash.now[:alert] = "wrong email and password"
       render :new
     end
   end
-
-  # LOGOUT
   def destroy
     cookies.delete(:jwt)
-    redirect_to login_path, notice: "Logged out successfully"
+    redirect_to login_path, notice: "Logged-out"
   end
 end
