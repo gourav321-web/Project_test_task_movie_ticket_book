@@ -22,6 +22,18 @@
     <div class="actions">
       <%= f.submit "Book Now" %>
     </div>
+
+    <% if current_user.role == "admin" %>
+      <div class="flex-css">
+        <div class="add-movie-btn">
+           <%= link_to "Edit show", edit_movie_show_path(@show[:movie_id], @show) %>
+        </div>
+
+        <div class="add-movie-btn">
+          <%= link_to "delete show", new_movie_path %>
+        </div>
+      </div>
+    <%end%>
   <% end %>
 
 </div>

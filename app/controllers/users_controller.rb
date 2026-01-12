@@ -17,6 +17,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    # byebug
+    @user = User.find_by(id:params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update!(user_params)
+      redirect_to movies_path, notice: 'Profile details were successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :profile_picture)

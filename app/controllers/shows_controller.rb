@@ -10,12 +10,33 @@ class ShowsController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     @show = @movie.shows.new(show_params)
+    # @show[:available_seats] = 120
 
+    # ifshow[:available_seats] > 120
     if @show.save
       redirect_to movie_path(@movie), notice: "Show created successfully"
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @show = Show.find_by(id:params[:movie_id])
+  end
+
+  def update
+    @show = Show.find_by(id:params[:id])
+    byebug
+    if @show.update(show_params)
+      redirect_to @movie, notice: 'show  details were successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @show = Show.find_by(id:params[:id])
+    byebug
   end
   
   private

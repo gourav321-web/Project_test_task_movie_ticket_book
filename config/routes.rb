@@ -2,21 +2,17 @@ Rails.application.routes.draw do
 
   root "sessions#new"
 
-  get    "/login",    to: "sessions#new"
-  post   "/login",    to: "sessions#create"
-  delete "/logout",   to: "sessions#destroy"
-
+  get    "/login", to: "sessions#new"
+  post   "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   get  "/register", to: "users#new"
-  post "/users",    to: "users#create"
-
+  resources :users
   resources :movies do
-    resources :shows, only: [ :new, :create ]
+    resources :shows
   end
-
   resources :shows, only: [] do
     resources :bookings, only: [:new, :create]
   end
-
   resources :bookings, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       cookies.signed[:jwt] = { value: token, httponly: true }
       redirect_to movies_path, notice: "Logged-in"
     else
-      flash.now[:alert] = "wrong email and password"
+      flash.now[:alert] = "Invalid email or password"
       render :new, status: :unprocessable_entity
     end
   end

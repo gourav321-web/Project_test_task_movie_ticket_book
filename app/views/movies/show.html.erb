@@ -19,12 +19,30 @@
   <h3 class="no-shows">No shows available for this movie.</h3>
 <% end %>
 
+
+<div class= "flex-css">
   <nav class="add-show-btn">
     <%= link_to "Back to Movies", movies_path %>
   </nav>
 
-<% if current_user.role == "admin" %>
-  <nav class="add-show-btn">
-    <%= link_to "Add Show", new_movie_show_path(@movie) %>
-  </nav>
-<%end%>
+  <% if current_user.role == "admin" %>
+    <div class="add-show-btn">
+      <%= link_to "Add Show", new_movie_show_path(@movie) %>
+    </div>
+
+    <div class="add-show-btn">
+      <%= link_to "Edit Movie", edit_movie_path(@movie) %>
+    </div>
+
+
+    <div class="add-movie-btn">
+      <%= link_to "Delete Movie",
+        movie_path(@movie),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } 
+      %>
+    </div>
+  <%end%>
+</div>

@@ -105,13 +105,15 @@ body {
   align-items: center;
 }
 
-.logo {
+.logo a{
   color: white;
-  font-size: 20px;
-  font-weight: bold;
-  white-space: nowrap;
+  text-decoration: none;
 }
 
+.logo a:hover{
+  color: red;
+  font-size: 30px; 
+}
 .user {
   display: flex;
   align-items: center;
@@ -139,6 +141,8 @@ body {
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .user button:hover {
@@ -187,6 +191,13 @@ body {
   margin: 5px 0;
   border-radius: 6px;
   text-decoration: none;
+  margin: 10px;
+}
+
+.flex-css{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }
 
 .booking-wrapper {
@@ -256,4 +267,13 @@ form {
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.add-show,
+.add-movie{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
 }

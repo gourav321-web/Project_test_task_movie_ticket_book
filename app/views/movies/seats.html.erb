@@ -1,0 +1,17 @@
+<div class="screen">Screen</div>
+
+  <div class="seating-map">
+
+    <% @shows.each_slice(10) do |row_seats| %>
+
+      <div class="row">
+        <% row_seats.each do |seat| %>
+          <%= tag.div(seat.number,
+              class: "seat #{seat.status} #{'selected' if @selected_seats.include?(seat.id)}",
+              data: { seat_id: seat.id, status: seat.status }) %>
+        <% end %>
+
+      </div>
+    <% end %>
+    
+</div>
