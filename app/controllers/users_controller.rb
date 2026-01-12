@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver_later
       redirect_to movies_path, notice: "Account create"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -1,17 +1,28 @@
-<h2>My Bookings</h2>
+<h2 class="page-title">My Bookings</h2>
 
 <% if @bookings.any? %>
-  <ul>
+  <div class="bookings-container">
     <% @bookings.each do |booking| %>
-      <li>
-         <%= booking.show.movie.title %> |
-         <%= booking.show.show_time.strftime("%d %b %Y, %I:%M %p") %> |
-        Seats: <%=booking.number_of_seats %> |
-        ₹ <%= booking.total_price %> |
-        Status: <%= booking.status %>
-      </li>
+      <div class="booking-card">
+        <h3 class="movie-title">
+          <%= booking.show.movie.title %>
+        </h3>
+
+        <p class="booking-time">
+          <%= booking.show.show_time.strftime("%d %b %Y, %I:%M %p") %>
+        </p>
+
+        <p>Seats: <strong><%= booking.number_of_seats %></strong></p>
+        <p>Amount: <strong>₹ <%= booking.total_price %></strong></p>
+        <p>
+          Status:
+          <span class="status <%= booking.status.downcase %>">
+            <%= booking.status %>
+          </span>
+        </p>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
-  <p>No bookings yet</p>
+  <p class="no-bookings">No bookings yet</p>
 <% end %>

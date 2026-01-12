@@ -1,22 +1,27 @@
-<p>
-  Movie:<%= @show.movie.title %><br>
-  Show Time: <%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %><br>
-  Price per seat: ₹<%= @show.seat_price %><br>
-  Available seats: <%= @show.available_seats %>
-</p>
+<div class="booking-wrapper">
 
-<% if @booking.errors.any? %>
-    <% @booking.errors[:seatnotpresent].each do |message| %>
-      <div style="margin-bottom: 20px;">
-        <span style="background-color: red;"><%= message %></span>
-      </div>
-    <% end %>
-<% end %>
-
-<%= form_with model: [@show, @booking], local: true do |f| %>
-  <div>
-    <%= f.label :number_of_seats %><br>
-    <%= f.number_field :number_of_seats %>
+  <div class="show-info">
+    <p><strong>Movie:</strong> <%= @show.movie.title %></p>
+    <p><strong>Show Time:</strong> <%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %></p>
+    <p><strong>Price per seat:</strong> ₹<%= @show.seat_price %></p>
+    <p><strong>Available seats:</strong> <%= @show.available_seats %></p>
   </div>
-  <%= f.submit "Booking"%>
-<% end %>
+
+  <%= form_with model: [@show, @booking], local: true do |f| %>
+    <div class="field">
+      <%= f.label :number_of_seats %>
+      <%= f.number_field :number_of_seats %>
+
+      <% if @booking.errors[:number_of_seats].any? %>
+        <div class="booking-error">
+          <%= @booking.errors[:number_of_seats].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Book Now" %>
+    </div>
+  <% end %>
+
+</div>

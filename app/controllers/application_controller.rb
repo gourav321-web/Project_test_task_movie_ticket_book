@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
-  include JwtAuthenticable
+  include JwtAuth
   helper_method :current_user
 end

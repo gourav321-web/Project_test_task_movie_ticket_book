@@ -18,9 +18,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def show
-    # yaha pr perticular movie ke show display karne ka code likhna hai 
-  end
   private
   def setshow
     @show = Show.find(params[:show_id])

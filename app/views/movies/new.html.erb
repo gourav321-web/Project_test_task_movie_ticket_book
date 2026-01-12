@@ -1,0 +1,45 @@
+<h2>Add Movie</h2>
+
+<%= form_with model: @movie, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <% if @movie.errors[:title].any? %>
+      <p class="error"><%= @movie.errors[:title].first %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <% if @movie.errors[:description].any? %>
+      <p class="error"><%= @movie.errors[:description].first %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.number_field :duration %>
+
+    <% if @movie.errors[:duration].any? %>
+      <p class="error"><%= @movie.errors[:duration].first %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banner_image %>
+    <%= f.file_field :banner_image, accept: "image/*" %>
+
+    <% if @movie.errors[:banner_image].any? %>
+      <p class="error"><%= @movie.errors[:banner_image].first %></p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Movie" %>
+  </div>
+
+<% end %>

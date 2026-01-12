@@ -1,4 +1,4 @@
-module JwtAuthenticable
+module JwtAuth
   extend ActiveSupport::Concern
   JWT_SECRET = Rails.application.secret_key_base
 

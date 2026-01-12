@@ -1,17 +1,30 @@
+<h2 class="page-title">Available Shows</h2>
+
 <% if @shows.any? %>
-  <ul>
+  <div class="shows-container">
     <% @shows.each do |show| %>
-      <li>
-         <%= show.show_time.strftime("%d %b %Y, %I:%M %p") %> 
-        Seats: <%= show.available_seats %>
-        Price: ₹<%= show.seat_price %>
-        <%= link_to "Book", new_show_booking_path(show) %>
-      </li>
+      <div class="show-card">
+        <p class="show-time">
+          <%= show.show_time.strftime("%d %b %Y, %I:%M %p") %>
+        </p>
+
+        <p>Seats: <strong><%= show.available_seats %></strong></p>
+        <p>Price: <strong>₹<%= show.seat_price %></strong></p>
+
+        <%= link_to "Book Now", new_show_booking_path(show), class: "book-btn" %>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
-  <p>No shows available for this movie.</p>
+  <h3 class="no-shows">No shows available for this movie.</h3>
 <% end %>
 
-<%= link_to "Back to Movie", movie_path(@movie) %>&nbsp;&nbsp;&nbsp;
-<%= link_to "Back to Movies", movies_path %>
+  <nav class="add-show-btn">
+    <%= link_to "Back to Movies", movies_path %>
+  </nav>
+
+<% if current_user.role == "admin" %>
+  <nav class="add-show-btn">
+    <%= link_to "Add Show", new_movie_show_path(@movie) %>
+  </nav>
+<%end%>

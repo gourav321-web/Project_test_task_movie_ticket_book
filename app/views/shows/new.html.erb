@@ -1,0 +1,36 @@
+<h2>Add Show</h2>
+
+<%= form_with model: [@movie, @show], local: true, data: { turbo: false } do |f| %>
+
+  <div class="field">
+    <%= f.label :show_time, "Show Date & Time" %>
+    <%= f.datetime_select :show_time %>
+
+    <% if @show.errors[:show_time].any? %>
+      <p class="error"><%= @show.errors[:show_time].first %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :available_seats, "Total Seats Available" %>
+    <%= f.number_field :available_seats %>
+
+    <% if @show.errors[:available_seats].any? %>
+      <p class="error"><%= @show.errors[:available_seats].first %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :seat_price, "Price per Seat (₹)" %>
+    <%= f.number_field :seat_price %>
+
+    <% if @show.errors[:seat_price].any? %>
+      <p class="error"><%= @show.errors[:seat_price].first %></p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Show" %>
+  </div>
+
+<% end %>
