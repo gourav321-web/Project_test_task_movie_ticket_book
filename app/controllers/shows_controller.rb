@@ -22,9 +22,9 @@ class ShowsController < ApplicationController
   end
 
   def update
+    @show.total_seats = @show.available_seats
     if @show.update(show_params)
-      redirect_to movie_path(@movie),
-                  notice: "Show details were successfully updated."
+      redirect_to movie_path(@movie),notice: "Show details were successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,8 +32,7 @@ class ShowsController < ApplicationController
 
   def destroy
     @show.destroy
-    redirect_to movie_path(@movie),
-                notice: "Show deleted successfully"
+    redirect_to movie_path(@movie), notice: "Show deleted successfully"
   end
 
   private

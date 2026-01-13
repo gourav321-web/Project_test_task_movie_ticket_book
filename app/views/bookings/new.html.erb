@@ -10,7 +10,7 @@
     <% total_seats = @show.total_seats %>
     <% seat_count = 0 %>
     <% row = "A" %>
-
+    <%# byebug %>
     <% while seat_count < total_seats %>
       <div class="seat-row">
         <% 10.times do |i| %>
@@ -32,4 +32,25 @@
   <% end %>
 
   <%= f.submit "Book Now", class: "book-btn" %>
+  
 <% end %>
+
+
+<%# admin buttons %>
+
+<% if current_user.role == "admin" %>
+    <div class="flex-css">
+
+      <%= link_to "Edit Show",
+          edit_movie_show_path(@show.movie, @show),
+          class: "book-btn" %>
+      
+      <%= button_to "Delete Show",
+          movie_show_path(@show.movie, @show),
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "book-btn",
+          form: { style: "display:inline" } %>
+
+    </div>
+  <% end %>

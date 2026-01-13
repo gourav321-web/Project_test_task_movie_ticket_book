@@ -72,3 +72,12 @@ gem "jwt"
 group :development, :test do
   gem 'byebug'
 end
+
+
+group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  # Optional: Add an extension for your test suite (e.g., RSpec)
+  # gem 'rubocop-rspec', require: false
+end
+

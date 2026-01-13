@@ -8,9 +8,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = @show.bookings.new
-    @booked_seats = @show.bookings.pluck(:seat_numbers)
-                                 .join(",")
-                                 .split(",")
+    @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
   end
 
   def create
@@ -21,9 +19,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path, notice: "Booking complete"
     else
-      @booked_seats = @show.bookings.pluck(:seat_numbers)
-                                   .join(",")
-                                   .split(",")
+      @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
       render :new, status: :unprocessable_entity
     end
   end
