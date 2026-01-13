@@ -1,18 +1,16 @@
 class ShowsController < ApplicationController
   before_action :authtouser
-  before_action :movie
+  before_action :set_movie
+  before_action :set_show, only: [:edit, :update, :destroy]
 
   def new
-    @movie = Movie.find(params[:movie_id])
     @show = @movie.shows.new
   end
 
   def create
-    @movie = Movie.find(params[:movie_id])
     @show = @movie.shows.new(show_params)
-    # @show[:available_seats] = 120
+    @show.total_seats = @show.available_seats
 
-    # ifshow[:available_seats] > 120
     if @show.save
       redirect_to movie_path(@movie), notice: "Show created successfully"
     else
@@ -21,27 +19,31 @@ class ShowsController < ApplicationController
   end
 
   def edit
-    @show = Show.find_by(id:params[:movie_id])
   end
 
   def update
-    @show = Show.find_by(id:params[:id])
-    byebug
     if @show.update(show_params)
-      redirect_to @movie, notice: 'show  details were successfully updated.'
+      redirect_to movie_path(@movie),
+                  notice: "Show details were successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @show = Show.find_by(id:params[:id])
-    byebug
+    @show.destroy
+    redirect_to movie_path(@movie),
+                notice: "Show deleted successfully"
   end
-  
+
   private
-  def movie
+
+  def set_movie
     @movie = Movie.find(params[:movie_id])
+  end
+
+  def set_show
+    @show = @movie.shows.find(params[:id])
   end
 
   def show_params

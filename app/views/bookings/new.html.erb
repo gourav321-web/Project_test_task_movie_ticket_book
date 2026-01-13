@@ -1,39 +1,35 @@
-<div class="booking-wrapper">
+<script>
+  window.bookedSeats = <%= raw @booked_seats.to_json %>;
+</script>
 
-  <div class="show-info">
-    <p><strong>Movie:</strong> <%= @show.movie.title %></p>
-    <p><strong>Show Time:</strong> <%= @show.show_time.strftime("%d %b %Y, %I:%M %p") %></p>
-    <p><strong>Price per seat:</strong> ₹<%= @show.seat_price %></p>
-    <p><strong>Available seats:</strong> <%= @show.available_seats %></p>
+<%= form_with model: [@show, @booking], local: true, data: { turbo: false } do |f| %>
+
+  <input type="hidden" name="booking[seat_numbers]" id="seat_numbers">
+
+  <div class="seat-layout">
+    <% total_seats = @show.total_seats %>
+    <% seat_count = 0 %>
+    <% row = "A" %>
+
+    <% while seat_count < total_seats %>
+      <div class="seat-row">
+        <% 10.times do |i| %>
+          <% break if seat_count >= total_seats %>
+
+          <div class="seat" data-seat="<%= row + (i + 1).to_s %>">
+            <%= row + (i + 1).to_s %>
+          </div>
+
+          <% seat_count += 1 %>
+        <% end %>
+      </div>
+      <% row = row.next %>
+    <% end %>
   </div>
 
-  <%= form_with model: [@show, @booking], local: true do |f| %>
-    <div class="field">
-      <%= f.label :number_of_seats %>
-      <%= f.number_field :number_of_seats %>
-
-      <% if @booking.errors[:number_of_seats].any? %>
-        <div class="booking-error">
-          <%= @booking.errors[:number_of_seats].first %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Book Now" %>
-    </div>
-
-    <% if current_user.role == "admin" %>
-      <div class="flex-css">
-        <div class="add-movie-btn">
-           <%= link_to "Edit show", edit_movie_show_path(@show[:movie_id], @show) %>
-        </div>
-
-        <div class="add-movie-btn">
-          <%= link_to "delete show", new_movie_path %>
-        </div>
-      </div>
-    <%end%>
+  <% @booking.errors.full_messages.each do |err| %>
+    <div class="booking-error"><%= err %></div>
   <% end %>
 
-</div>
+  <%= f.submit "Book Now", class: "book-btn" %>
+<% end %>

@@ -277,3 +277,44 @@ form {
   align-items: center;
   margin-top: 15%;
 }
+
+
+/* seat selection css */
+
+.seat-layout {
+  margin: 20px 0;
+}
+
+.seat-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #ffffff;
+}
+
+/* user selected seat */
+.seat.selected {
+  background-color: #16a34a;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+/* already booked seat */
+.seat.booked {
+  background-color: #9ca3af;
+  color: #ffffff;
+  border-color: #6b7280;
+  cursor: not-allowed;
+  pointer-events: none;
+}

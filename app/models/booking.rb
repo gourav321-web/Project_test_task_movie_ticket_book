@@ -2,43 +2,118 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :show
 
-  validates :number_of_seats, presence: true, numericality: { greater_than: 0 }
-  validate :seats
+  validates :seat_numbers, presence: true
+  validate :seat_validation
+
+  before_validation :set_number_of_seats
   before_validation :totalprice
-  after_create :seatremove
-  after_create :bookingmail
+  after_commit :seatremove, on: :create
+  after_commit :bookingmail, on: :create
 
   private
 
-  def totalprice
-    return if number_of_seats.blank?
-    return if show.blank?
-    return if show.seat_price.blank?
+  def set_number_of_seats
+    return if seat_numbers.blank?
+    self.number_of_seats = seat_numbers.split(",").length
+  end
 
+  def totalprice
+    return if number_of_seats.blank? || show.blank?
     self.total_price = number_of_seats * show.seat_price
   end
 
-  def seats
-    return if number_of_seats.blank?
-    return if show.blank?
-    return if show.available_seats.blank?
+  def seat_validation
+    return if seat_numbers.blank? || show.blank?
 
-    if show.available_seats <= 0
-      errors.add(:number_of_seats, "no seats available")
-    elsif number_of_seats > show.available_seats
-      errors.add(:number_of_seats, "insufficient seats")
+    selected = seat_numbers.split(",")
+
+    already_booked = show.bookings
+                         .pluck(:seat_numbers)
+                         .join(",")
+                         .split(",")
+
+    if (selected & already_booked).any?
+      errors.add(:seat_numbers, "some seats already booked")
+    end
+
+    if selected.length > show.available_seats
+      errors.add(:seat_numbers, "not enough seats available")
     end
   end
 
   def seatremove
-    return if number_of_seats.blank?
-    return if show.blank?
-    return if show.available_seats.blank?
-
-    show.update!(available_seats: show.available_seats - number_of_seats)
+    Show.where(id: show_id)
+        .update_all("available_seats = available_seats - #{number_of_seats}")
   end
 
   def bookingmail
     UserMailer.booking_confirmation(self).deliver_later
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# <% if current_user.role == "admin" %>
+#     <div class="flex-css">
+
+#       <%= link_to "Edit Show",
+#           edit_movie_show_path(@show.movie, @show),
+#           class: "book-btn" %>
+
+#       <%= button_to "Delete Show",
+#           movie_show_path(@show.movie, @show),
+#           method: :delete,
+#           data: { confirm: "Are you sure?" },
+#           class: "book-btn",
+#           form: { style: "display:inline" } %>
+
+#     </div>
+#   <% end %>

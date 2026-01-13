@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_11_140741) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_13_034504) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_140741) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "number_of_seats"
+    t.string "seat_numbers"
     t.integer "show_id", null: false
     t.string "status"
     t.decimal "total_price"
@@ -65,6 +66,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_140741) do
     t.integer "movie_id", null: false
     t.decimal "seat_price"
     t.datetime "show_time"
+    t.integer "total_seats"
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_shows_on_movie_id"
   end

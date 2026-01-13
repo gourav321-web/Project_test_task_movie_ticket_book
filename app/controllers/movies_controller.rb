@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   def show
     # byebug
     @movie = Movie.find(params[:id])
-    @shows = @movie.shows
+    @shows = @movie.shows.where("available_seats > 0")
   end
 
   def create
