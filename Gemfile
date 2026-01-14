@@ -70,5 +70,8 @@ gem "bcrypt"
 gem "jwt"
 
 group :development, :test do
-  gem 'byebug'
+  gem "byebug"
 end
+
+gem "sidekiq"
+gem "redis"

@@ -8,9 +8,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = @show.bookings.new
-    @booked_seats = @show.bookings.pluck(:seat_numbers)
-                                 .join(",")
-                                 .split(",")
+    @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
   end
 
   def create
@@ -19,11 +17,18 @@ class BookingsController < ApplicationController
     @booking.status = "book"
 
     if @booking.save
+
+     show_time = @booking.show.show_time
+    reminder_time = show_time - 1.hour
+
+    if reminder_time > Time.current
+      # ShowReminderJob.set(wait_until: reminder_time).perform_later(@booking.id)
+      ShowReminderJob.perform_now(@booking.id)
+    end
+    
       redirect_to bookings_path, notice: "Booking complete"
     else
-      @booked_seats = @show.bookings.pluck(:seat_numbers)
-                                   .join(",")
-                                   .split(",")
+      @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
       render :new, status: :unprocessable_entity
     end
   end

@@ -1,0 +1,8 @@
+<h2>Hello <%= @user.name %>,</h2>
+
+<p>
+  Just a reminder: your show for <strong><%= @show.movie.title %></strong>
+  starts at <%= @show.show_time.strftime("%I:%M %p") %> (in 1 hour)
+</p>
+
+<p>Enjoy!</p>
