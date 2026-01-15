@@ -34,7 +34,7 @@ class Booking < ApplicationRecord
     end
 
     if selected.length > show.available_seats
-      errors.add(:seat_numbers, "not enough seats available")
+      errors.add(:seat_numbers, " enough seats are not available")
     end
   end
 
