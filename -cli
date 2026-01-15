@@ -1,0 +1,14 @@
+[0;1;32m●[0m redis-server.service - Advanced key-value store
+     Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Wed 2026-01-14 14:45:07 IST; 3h 16min ago
+       Docs: http://redis.io/documentation,
+             man:redis-server(1)
+   Main PID: 778 (redis-server)
+     Status: "Ready to accept connections"
+      Tasks: 7 (limit: 9265)
+     Memory: 14.4M
+     CGroup: /system.slice/redis-server.service
+             └─778 /usr/bin/redis-server 127.0.0.1:6379
+
+Jan 14 14:45:07 rails systemd[1]: Starting Advanced key-value store...
+Jan 14 14:45:07 rails systemd[1]: Started Advanced key-value store.

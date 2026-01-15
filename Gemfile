@@ -81,3 +81,9 @@ group :development, :test do
   # gem 'rubocop-rspec', require: false
 end
 
+
+gem 'sidekiq'
+
+gem 'redis'
+
+

@@ -1,0 +1,17 @@
+Unit redis-serversudo.service could not be found.
+Unit systemctl.service could not be found.
+Unit status.service could not be found.
+● redis-server.service - Advanced key-value store
+     Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Thu 2026-01-15 12:32:28 IST; 1min 20s ago
+       Docs: http://redis.io/documentation,
+             man:redis-server(1)
+    Process: 776 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+   Main PID: 776 (code=exited, status=0/SUCCESS)
+     Status: "Saving the final RDB snapshot"
+
+Jan 15 12:17:43 rails systemd[1]: Starting Advanced key-value store...
+Jan 15 12:17:43 rails systemd[1]: Started Advanced key-value store.
+Jan 15 12:32:28 rails systemd[1]: Stopping Advanced key-value store...
+Jan 15 12:32:28 rails systemd[1]: redis-server.service: Succeeded.
+Jan 15 12:32:28 rails systemd[1]: Stopped Advanced key-value store.

@@ -12,6 +12,7 @@ class ShowsController < ApplicationController
     @show.total_seats = @show.available_seats
 
     if @show.save
+
       redirect_to movie_path(@movie), notice: "Show created successfully"
     else
       render :new, status: :unprocessable_entity

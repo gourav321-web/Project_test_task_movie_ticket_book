@@ -27,10 +27,7 @@ class Booking < ApplicationRecord
 
     selected = seat_numbers.split(",")
 
-    already_booked = show.bookings
-                         .pluck(:seat_numbers)
-                         .join(",")
-                         .split(",")
+    already_booked = show.bookings.pluck(:seat_numbers).join(",").split(",")
 
     if (selected & already_booked).any?
       errors.add(:seat_numbers, "some seats already booked")
@@ -47,6 +44,8 @@ class Booking < ApplicationRecord
   end
 
   def bookingmail
-    SendWelcomeEmailJob.perform_later(@user)
+    # byebug
+    UserMailer.booking_confirmation(self).deliver_later
   end
 end
+
