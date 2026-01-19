@@ -14,15 +14,9 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email,subject: "Booking Confirmed:#{@movie.title}")
   end
 
-  def show_reminder(booking)
-  @booking = booking
-  @user = booking.user
-  @show = booking.show
-  mail(to: @user.email, subject: "Reminder: Your Show Starts In 1 Hour")
-end
 
   def show_reminder(user, email, show)
-    byebug
+    # byebug
     @user = user
     @show = show
     # # @show = show

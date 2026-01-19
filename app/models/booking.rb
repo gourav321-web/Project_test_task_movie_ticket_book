@@ -2,17 +2,14 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :show
 
-  scope :expired_shows, -> {
-    joins(:show).where("shows.show_time < ?", Time.current)
-  }
 
   validates :seat_numbers, presence: true
   validate :seat_validation
 
   before_validation :set_number_of_seats
   before_validation :totalprice
-  after_commit :seatremove, on: :create
-  after_commit :bookingmail, on: :create
+  after_create :seatremove
+  after_create :bookingmail
 
   private
 
@@ -52,3 +49,85 @@ class Booking < ApplicationRecord
     UserMailer.booking_confirmation(self).deliver_later
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # scope :expired_shows, -> {
+  #   joins(:show).where("shows.show_time < ?", Time.current)
+  # }

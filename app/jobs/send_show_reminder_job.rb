@@ -1,7 +1,7 @@
 class SendShowReminderJob < ApplicationJob
   queue_as :sidekiq
   def perform(booking_id)
-    byebug
+    # byebug
     @booking = Booking.find_by_id(booking_id)
     user = @booking.user
     user_email = user.email
