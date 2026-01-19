@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   get  "/register", to: "users#new"
   resources :users
   resources :movies do
-    resources :shows
+    collection do
+      get 'search'  
+    end
+    resources :shows do
+      collection do
+        get 'search_show'  
+      end
+    end
   end
   resources :shows, only: [] do
     resources :bookings, only: [:new, :create]

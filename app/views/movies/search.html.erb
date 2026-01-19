@@ -1,0 +1,50 @@
+<h2 class="page-title">All Movies</h2>
+ 
+<%= form_with(url: search_movies_path, method: :get, local: true) do |form| %>
+ <div>
+   <h2>Search movie</h2>
+   <%= form.text_field :key, placeholder: "Search posts" %>
+   <%= form.submit "Search" %>
+ </div>
+<% end %>
+
+<div class="movies-container">
+  <%if @movies.any?%>
+    <% @movies.each do |movie| %>
+      <div class="movie-card">
+        <h3><%= link_to movie.title, movie_path(movie) %></h3>
+        <p><%=movie.description%></p>
+        <% sec = movie.duration * 60 %>
+        <% hours = sec / 3600 %>
+        <% minutes = (sec % 3600) / 60 %>
+        <% seconds = sec % 60 %>
+
+        <p class="duration">
+        Duration: <%= hours %>h <%= minutes %>m <%= seconds %>s
+        </p>
+        
+        <% if movie.banner_image.attached? %>
+          <%= image_tag url_for(movie.banner_image), class: "movie-image" %>
+        <% end %>
+      </div>
+    <% end %>
+  <%else%>
+    <h2><%=@search%> is not available </h2>
+  <%end%>
+</div>
+
+<div class="flex-css">
+
+  <div class="bookings-btn">
+    <%= link_to "My Bookings", bookings_path %>
+  </div>
+
+  <% if current_user.role == "admin" %>
+    <div class="add-movie-btn">
+      <%= link_to "Add Movie", new_movie_path %>
+    </div>
+    
+  <%end%>
+
+</div>
+

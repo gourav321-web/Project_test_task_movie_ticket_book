@@ -45,6 +45,12 @@ class MoviesController < ApplicationController
     end
   end
 
+  def search
+    @movies = Movie.where(title:params[:key])
+    @search = params[:key]
+    # byebug
+  end
+
   private
 
   def movie_params

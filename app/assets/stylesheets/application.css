@@ -342,3 +342,22 @@ form {
 .active { color: green; }
 .expired { color: red; }
 
+
+
+.flex{
+  width:600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+
+.search-bar{
+  display: flex;
+  width: 700px;
+}
+
+.field{
+  margin: 10px;
+}

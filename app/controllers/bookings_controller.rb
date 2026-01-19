@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
       if reminder_time > Time.current
         # byebug
         # SendShowReminderJob.set
+        byebug
         SendShowReminderJob.set(wait: 1.minutes).perform_later(@booking.id)
         # SendShowReminderJob.set(wait_until: reminder_time).perform_later(@booking.id)
 

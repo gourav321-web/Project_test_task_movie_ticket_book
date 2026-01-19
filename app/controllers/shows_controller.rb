@@ -36,6 +36,28 @@ class ShowsController < ApplicationController
     redirect_to movie_path(@movie), notice: "Show deleted successfully"
   end
 
+  def search_show
+    # byebug
+
+    @movie = Movie.find(params[:movie_id])
+    if params[:date].present?
+      date_only = Date.parse(params[:date])
+      # 2. Use a range to get all shows between 00:00:00 and 23:59:59
+      @shows = @movie.shows.where(show_time: date_only.all_day)
+
+    elsif params[:time].present?
+      parsed_time = Time.parse(params[:time])
+      datetime_object = params[:time].to_datetime
+      byebug
+      @shows = @movie.shows.where(show_time: datetime_object)
+
+    else
+      flash[:notice] = "Please select date or time"
+      @shows = @movie.shows
+    end
+
+  end
+
   private
 
   def set_movie

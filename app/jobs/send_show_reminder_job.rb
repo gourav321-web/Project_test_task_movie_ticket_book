@@ -1,12 +1,13 @@
 class SendShowReminderJob < ApplicationJob
-  queue_as :sidekiq
+  queue_as :default
+  
   def perform(booking_id)
-    # byebug
     @booking = Booking.find_by_id(booking_id)
     user = @booking.user
     user_email = user.email
     show = @booking.show
     UserMailer.show_reminder(user, user_email,show).deliver_now
+    Rails.logger.info "This is an info message."
   end
 end
 
