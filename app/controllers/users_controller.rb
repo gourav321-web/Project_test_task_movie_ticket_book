@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       token = encode_token({ user_id: @user.id })
       cookies.signed[:jwt] = { value: token, httponly: true }
+      # byebug
       UserMailer.welcome_email(@user).deliver_later
       redirect_to movies_path, notice: "Account create"
     else

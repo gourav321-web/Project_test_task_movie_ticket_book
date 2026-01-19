@@ -15,7 +15,7 @@
       </p>
       
       <% if movie.banner_image.attached? %>
-        <%= image_tag movie.banner_image, class: "movie-image" %>
+        <%= image_tag url_for(movie.banner_image), class: "movie-image" %>
       <% end %>
     </div>
   <% end %>

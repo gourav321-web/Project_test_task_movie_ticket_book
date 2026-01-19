@@ -2,6 +2,10 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :show
 
+  scope :expired_shows, -> {
+    joins(:show).where("shows.show_time < ?", Time.current)
+  }
+
   validates :seat_numbers, presence: true
   validate :seat_validation
 
@@ -27,17 +31,14 @@ class Booking < ApplicationRecord
 
     selected = seat_numbers.split(",")
 
-    already_booked = show.bookings
-                         .pluck(:seat_numbers)
-                         .join(",")
-                         .split(",")
+    already_booked = show.bookings.pluck(:seat_numbers).join(",").split(",")
 
     if (selected & already_booked).any?
       errors.add(:seat_numbers, "some seats already booked")
     end
 
     if selected.length > show.available_seats
-      errors.add(:seat_numbers, "not enough seats available")
+      errors.add(:seat_numbers, " enough seats are not available")
     end
   end
 
@@ -47,73 +48,7 @@ class Booking < ApplicationRecord
   end
 
   def bookingmail
+    # byebug
     UserMailer.booking_confirmation(self).deliver_later
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# <% if current_user.role == "admin" %>
-#     <div class="flex-css">
-
-#       <%= link_to "Edit Show",
-#           edit_movie_show_path(@show.movie, @show),
-#           class: "book-btn" %>
-
-#       <%= button_to "Delete Show",
-#           movie_show_path(@show.movie, @show),
-#           method: :delete,
-#           data: { confirm: "Are you sure?" },
-#           class: "book-btn",
-#           form: { style: "display:inline" } %>
-
-#     </div>
-#   <% end %>

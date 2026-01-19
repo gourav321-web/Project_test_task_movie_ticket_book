@@ -75,3 +75,11 @@ end
 
 gem "sidekiq"
 gem "redis"
+
+group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  # Optional: Add an extension for your test suite (e.g., RSpec)
+  # gem 'rubocop-rspec', require: false
+end
+

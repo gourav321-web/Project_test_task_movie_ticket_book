@@ -4,22 +4,60 @@
   <div class="bookings-container">
     <% @bookings.each do |booking| %>
       <div class="booking-card">
+        <h2 class="page-title">My Bookings</h2>
+
+<% if @bookings.any? %>
+  <div class="bookings-container">
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+
         <h3 class="movie-title">
           <%= booking.show.movie.title %>
         </h3>
 
-        <p class="booking-time">
-          <%= booking.show.show_time.strftime("%d %b %Y, %I:%M %p") %>
-        </p>
+        <table class="booking-table">
+          <tr>
+            <th>Show Time</th>
+            <td><%= booking.show.show_time.strftime("%d %b %Y, %I:%M %p") %></td>
+          </tr>
 
-        <p>Seats: <strong><%= booking.number_of_seats %></strong></p>
-        <p>Amount: <strong>₹ <%= booking.total_price %></strong></p>
-        <p>
-          Status:
-          <span class="status <%= booking.status.downcase %>">
-            <%= booking.status %>
-          </span>
-        </p>
+          <tr>
+            <th>Seats</th>
+            <td><%= booking.number_of_seats %></td>
+          </tr>
+
+          <tr>
+            <th>Amount</th>
+            <td>₹ <%= booking.total_price %></td>
+          </tr>
+
+          <tr>
+            <th>Status</th>
+            <td>
+              <span class="status <%= booking.status.downcase %>">
+                <%= booking.status %>
+              </span>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Show Status</th>
+            <td>
+              <span class="<%= booking.show_status %>">
+                <%= booking.show_status.capitalize %>
+              </span>
+            </td>
+          </tr>
+
+        </table>
+
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="no-bookings">No bookings yet</p>
+<% end %>
+
       </div>
     <% end %>
   </div>

@@ -15,7 +15,6 @@ class BookingsController < ApplicationController
     @booking = @show.bookings.new(booking_params)
     @booking.user = current_user
     @booking.status = "book"
-
     if @booking.save
 
      show_time = @booking.show.show_time
@@ -26,6 +25,18 @@ class BookingsController < ApplicationController
       ShowReminderJob.perform_now(@booking.id)
     end
     
+      @show      = @booking.show
+      show_time = @show.show_time
+      reminder_time = show_time - 1.hour
+      if reminder_time > Time.current
+        byebug
+        # SendShowReminderJob.set
+        SendShowReminderJob.set(wait: 1.minutes).perform_later(@booking.id)
+        SendShowReminderJob.set(wait_until: reminder_time).perform_later(@booking.id)
+
+        SendShowReminderJob.perform_now(@booking.id)
+      end
+
       redirect_to bookings_path, notice: "Booking complete"
     else
       @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
