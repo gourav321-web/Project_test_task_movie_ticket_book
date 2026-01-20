@@ -16,15 +16,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "book"
     if @booking.save
-
-     show_time = @booking.show.show_time
-     reminder_time = show_time - 1.hour
-
-     if reminder_time > Time.current
-      # ShowReminderJob.set(wait_until: reminder_time).perform_later(@booking.id)
-      # byebug
-      # SendShowReminderJob.perform_now(@booking.id)
-     end
     
       @show      = @booking.show
       show_time = @show.show_time
@@ -41,10 +32,22 @@ class BookingsController < ApplicationController
 
       redirect_to bookings_path, notice: "Booking complete"
     else
-      @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
+      @booked_seats = @show.bookings.where(status: "booked").pluck(:seat_numbers).join(",").split(",")
       render :new, status: :unprocessable_entity
     end
   end
+
+  def cancel
+    booking = current_user.bookings.find(params[:id])
+
+    if booking.cancellable
+      booking.update(status: "cancelled")
+      redirect_to bookings_path, notice: "Booking cancel"
+    else
+      redirect_to bookings_path, alert: "Booking cancel is not possible now"
+    end
+  end
+
 
   private
 

@@ -11,6 +11,10 @@ class Booking < ApplicationRecord
   after_create :seatremove
   after_create :bookingmail
 
+  def cancellable
+    Time.current < (show.show_time - 2.hours)
+  end
+
   private
 
   def set_number_of_seats

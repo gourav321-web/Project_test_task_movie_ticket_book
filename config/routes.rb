@@ -22,9 +22,12 @@ Rails.application.routes.draw do
   resources :shows, only: [] do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index] do
+    member do
+    patch :cancel
+  end
+end
 
-  require "sidekiq/web"
   mount Sidekiq::Web => "/sidekiq"  # View jobs UI
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

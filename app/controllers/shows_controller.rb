@@ -37,26 +37,25 @@ class ShowsController < ApplicationController
   end
 
   def search_show
-    # byebug
-
     @movie = Movie.find(params[:movie_id])
-    if params[:date].present?
-      date_only = Date.parse(params[:date])
-      # 2. Use a range to get all shows between 00:00:00 and 23:59:59
-      @shows = @movie.shows.where(show_time: date_only.all_day)
+    @shows = @movie.shows.where("show_time >= ?", Time.current)
+
+    if params[:date].present? && params[:time].present?
+      selected_datetime = DateTime.parse("#{params[:date]} #{params[:time]}")
+      @shows = @shows.where(show_time: selected_datetime)
+
+    elsif params[:date].present?
+      selected_date = Date.parse(params[:date])
+      @shows = @shows.where(show_time: selected_date.all_day)
 
     elsif params[:time].present?
-      parsed_time = Time.parse(params[:time])
-      datetime_object = params[:time].to_datetime
-      byebug
-      @shows = @movie.shows.where(show_time: datetime_object)
+      @shows = @shows.where("TIME(show_time) >= ?", params[:time])
 
     else
-      flash[:notice] = "Please select date or time"
-      @shows = @movie.shows
+      flash.now[:notice] = "Please select date or time"
     end
-
   end
+
 
   private
 
