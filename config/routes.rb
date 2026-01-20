@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post   "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get  "/register", to: "users#new"
+
   resources :users
+
   resources :movies do
     collection do
       get 'search'  
@@ -19,13 +21,16 @@ Rails.application.routes.draw do
       end
     end
   end
+
   resources :shows, only: [] do
     resources :bookings, only: [:new, :create]
   end
+
   resources :bookings, only: [:index] do
     member do
     patch :cancel
   end
+  
 end
 
   mount Sidekiq::Web => "/sidekiq"  # View jobs UI

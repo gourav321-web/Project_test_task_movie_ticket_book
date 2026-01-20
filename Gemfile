@@ -83,3 +83,20 @@ group :development, :test do
   # gem 'rubocop-rspec', require: false
 end
 
+group :development, :test do
+  # gem "byebug", platforms: :mri
+  gem "rspec-rails"
+end
+
+
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
+gem 'rails-controller-testing'
+
+
+group :development, :test do
+  gem 'simplecov', require: false
+end

@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
 
       redirect_to bookings_path, notice: "Booking complete"
     else
-      @booked_seats = @show.bookings.where(status: "booked").pluck(:seat_numbers).join(",").split(",")
+      @booked_seats = @show.bookings.where(status: "book").pluck(:seat_numbers).join(",").split(",")
       render :new, status: :unprocessable_entity
     end
   end
@@ -41,6 +41,7 @@ class BookingsController < ApplicationController
     booking = current_user.bookings.find(params[:id])
 
     if booking.cancellable
+      byebug
       booking.update(status: "cancelled")
       redirect_to bookings_path, notice: "Booking cancel"
     else
