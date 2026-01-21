@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
   end
 
   def booking_confirmation(booking)
-    # byebug
+    byebug
     @booking = booking
     @user = booking.user
     @show = booking.show

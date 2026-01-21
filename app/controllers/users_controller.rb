@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_forgery_protection
 
   def new
+    byebug
     @user = User.new
   end
 

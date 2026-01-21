@@ -100,3 +100,12 @@ gem 'rails-controller-testing'
 group :development, :test do
   gem 'simplecov', require: false
 end
+
+
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+  
+  # this gem add when i face problem with callback 
+  gem 'shoulda-callback-matchers'
+end

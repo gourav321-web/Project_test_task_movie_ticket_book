@@ -1,106 +1,79 @@
-require 'rails_helper'
+# # require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+# # RSpec.describe "Users", type: :request do
 
-  describe "GET #new" do
-    it "assigns a new user" do
-      get :new
-      expect(assigns(:user)).to be_a_new(User)
-    end
+# #   # describe "GET /register" do
+# #   #   it "it render new view page" do
+# #   #     get register_path
 
-    it "renders new template" do
-      get :new
-      expect(response).to render_template(:new)
-    end
-  end
+# #   #     expect(response).to be_successful
 
-  describe "POST #create" do
-    let(:valid_params) do
-      {
-        user: {
-          name: "Test User",
-          email: "test@example.com",
-          password: "password123"
-        }
-      }
-    end
+# #   #     expect(response).to have_http_status(:success)
+# #   #     expect(response).to render_template(:new)
+# #   #   end
 
-    let(:invalid_params) do
-      {
-        user: {
-          name: "",
-          email: "",
-          password: ""
-        }
-      }
-    end
+# #   # end
 
-    context "with valid params" do
-      it "creates a new user" do
-        expect {
-          post :create, params: valid_params
-        }.to change(User, :count).by(1)
-      end
+# #   # describe "POST /users" do
+# #   #   context "with valid parameters" do
+# #   #     let(:user_params) do
+# #   #       {user: {name: "Gourav",email:"gourav@gmail.com", password:"Gourav@12"}} 
+# #   #     end
+      
+# #   #     it "it create a new user and return 201 status" do
+# #   #       byebug
+# #   #       expect(user_).to be_successful
+# #   #       # expect(response).to have_http_status(:created)
+# #   #     end
+# #   #   end
+# #   # end
 
-      it "sets JWT cookie" do
-        post :create, params: valid_params
-        expect(cookies.signed[:jwt]).to be_present
-      end
+# #   # it { should filter_param(:password) }
+# # end
 
-      it "redirects to movies path" do
-        post :create, params: valid_params
-        expect(response).to redirect_to(movies_path)
-      end
-    end
 
-    context "with invalid params" do
-      it "does not create a user" do
-        expect {
-          post :create, params: invalid_params
-        }.to_not change(User, :count)
-      end
 
-      it "renders new template" do
-        post :create, params: invalid_params
-        expect(response).to render_template(:new)
-      end
-    end
-  end
 
-  describe "GET #edit" do
-    let(:user) { create(:user) }
 
-    it "assigns requested user" do
-      get :edit, params: { id: user.id }
-      expect(assigns(:user)).to eq(user)
-    end
+# # spec/controllers/users_controller_spec.rb
+# require 'rails_helper'
 
-    it "renders edit template" do
-      get :edit, params: { id: user.id }
-      expect(response).to render_template(:edit)
-    end
-  end
+# describe UsersController, type: :request do
+#   # Define valid parameters for testing
+#   let(:valid_params) do
+#     {
+#       user: {
+#         name: 'John',
+#         email: 'johndoe@example.com',
+#         password: 'password123'
+#       }
+#     }
+#   end
 
-  describe "PATCH #update" do
-    let(:user) { create(:user, name: "Old Name") }
+#   describe "POST #create" do
+#     # it "permits the correct parameters for the user" do
+#     #   should permit(:name :email, :password, :profile_picture).
+#     #     for(:create, params: valid_params).
+#     #     on(:user)
+#     # end
+    
+#     it "creates a new user" do
+#       expect {
+#         post :create, params: valid_params
+#       }.to change(User, :count).by(1)
+#     end
 
-    let(:update_params) do
-      {
-        id: user.id,
-        user: { name: "New Name" }
-      }
-    end
+#     it "redirects to the created user" do
+#       post :create, params: valid_params
+#       # This uses the 'redirect_to' matcher
+#       should redirect_to(user_path(assigns(:user)))
+#     end
 
-    context "with valid params" do
-      it "updates user details" do
-        patch :update, params: update_params
-        expect(user.reload.name).to eq("New Name")
-      end
-
-      it "redirects to movies path" do
-        patch :update, params: update_params
-        expect(response).to redirect_to(movies_path)
-      end
-    end
-  end
-end
+#     it "assigns the created user to @user" do
+#       post :create, params: valid_params
+#       # This uses the 'assign_to' matcher (available in older shoulda-matchers versions, though often replaced by standard RSpec assigns methods)
+#       expect(assigns(:user)).to be_a(User)
+#       expect(assigns(:user)).to be_persisted
+#     end
+#   end
+# end

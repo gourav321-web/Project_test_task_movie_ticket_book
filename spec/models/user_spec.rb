@@ -51,4 +51,12 @@ RSpec.describe User, type: :model do
       expect(user.admin?).to eq(false)
     end
   end
+
+  describe 'association' do
+    it { should have_many :bookings }
+    it { should have_one_attached(:profile_picture) }
+  end
+
+  it { should define_enum_for(:role).with_values([:user, :admin]) }
+  it { should define_enum_for(:role) }
 end

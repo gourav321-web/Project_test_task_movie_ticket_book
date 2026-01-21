@@ -49,7 +49,7 @@ class Booking < ApplicationRecord
   end
 
   def bookingmail
-    # byebug
+    byebug
     UserMailer.booking_confirmation(self).deliver_later
   end
 end
