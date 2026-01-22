@@ -1,334 +1,58 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/application_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/auth_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/auth_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/bookings_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/bookings_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/movies_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/movies_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/sessions_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/sessions_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/shows_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/shows_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/helpers/users_helper.rb": {
+      "D:/rails/movie_ticket_booking_app/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/models/booking.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/application_controller.rb": {
         "lines": [
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          4,
-          0,
-          null,
-          null,
-          1,
-          4,
-          0,
-          null,
-          null,
-          1,
-          4,
-          null,
-          0,
-          null,
-          0,
-          null,
           0,
           0,
-          null,
-          null,
           0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+          0
+        ],
+        "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/models/movie.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/models/show.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/models/user.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/users_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/concerns/jwt_authenticable.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          0,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/bookings_controller.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/bookings_controller.rb": {
         "lines": [
           0,
           0,
@@ -395,7 +119,41 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/movies_controller.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/concerns/jwt_authenticable.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/controllers/movies_controller.rb": {
         "lines": [
           0,
           0,
@@ -459,7 +217,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/sessions_controller.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/sessions_controller.rb": {
         "lines": [
           0,
           0,
@@ -483,12 +241,6 @@
           0,
           null,
           0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
           0,
           0,
           0,
@@ -554,7 +306,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/controllers/shows_controller.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/shows_controller.rb": {
         "lines": [
           0,
           0,
@@ -632,7 +384,53 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/jobs/application_job.rb": {
+      "D:/rails/movie_ticket_booking_app/app/controllers/users_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -644,7 +442,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/jobs/send_show_reminder_job.rb": {
+      "D:/rails/movie_ticket_booking_app/app/jobs/send_show_reminder_job.rb": {
         "lines": [
           0,
           0,
@@ -675,7 +473,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/jobs/send_welcome_email_job.rb": {
+      "D:/rails/movie_ticket_booking_app/app/jobs/send_welcome_email_job.rb": {
         "lines": [
           0,
           0,
@@ -688,7 +486,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/mailers/application_mailer.rb": {
+      "D:/rails/movie_ticket_booking_app/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -697,7 +495,7 @@
         ],
         "branches": {}
       },
-      "/home/rails/Documents/trainning/rails/Project_test_task_movie_ticket_book/app/mailers/user_mailer.rb": {
+      "D:/rails/movie_ticket_booking_app/app/mailers/user_mailer.rb": {
         "lines": [
           0,
           null,
@@ -707,20 +505,224 @@
           0,
           null,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/models/booking.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
           null,
           0,
           0,
           0,
           0,
           0,
-          0,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/models/movie.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/models/show.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {}
+      },
+      "D:/rails/movie_ticket_booking_app/app/models/user.rb": {
+        "lines": [
+          0,
           0,
           null,
           0,
           0,
           null,
+          0,
+          null,
+          0,
+          0,
           0,
           0,
           0
@@ -728,6 +730,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1769002441
+    "timestamp": 1769054522
   }
 }
