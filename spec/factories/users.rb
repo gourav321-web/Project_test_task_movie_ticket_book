@@ -22,6 +22,6 @@ FactoryBot.define do
     email {'gourav@gmail.com'}
     name  {'Gourav Rathore'}
     role  {'user'}
-    password {'Repub@12'}
+    password {'Gourav@12'}
   end
 end

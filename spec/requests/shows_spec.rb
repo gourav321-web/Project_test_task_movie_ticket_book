@@ -57,14 +57,12 @@ RSpec.describe "Shows", type: :request do
   describe "PATCH /movies/:id" do
 
     it "updates movie details" do
-      # byebug
-      patch movie_show_path(movie show), params: {
-        show: { available_seats: 50 }
+      byebug
+      patch movie_show_path(movie, show), params: {
+        show: { seat_price: 500 }
       }
       byebug
-
       expect(response).to redirect_to(movie_path(movie))
-      # expect(movie.reload.title).to match(/New Title/i)
     end
   end
 end

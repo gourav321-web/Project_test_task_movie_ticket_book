@@ -4,7 +4,9 @@ class Booking < ApplicationRecord
 
 
   validates :seat_numbers, presence: true
-  validate :seat_validation
+
+  # validation change from validate to before_create
+  validate :seat_validation, on: :create
 
   before_validation :set_number_of_seats
   before_validation :totalprice
@@ -12,6 +14,7 @@ class Booking < ApplicationRecord
   after_create :bookingmail
 
   def cancellable
+    byebug
     Time.current < (show.show_time - 2.hours)
   end
 
@@ -32,7 +35,7 @@ class Booking < ApplicationRecord
 
     selected = seat_numbers.split(",")
 
-    already_booked = show.bookings.pluck(:seat_numbers).join(",").split(",")
+    already_booked = show.bookings.where(status: "book").pluck(:seat_numbers).join(",").split(",")
 
     if (selected & already_booked).any?
       errors.add(:seat_numbers, "some seats already booked")

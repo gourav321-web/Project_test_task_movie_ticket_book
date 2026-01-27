@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = @show.bookings.new
-    @booked_seats = @show.bookings.pluck(:seat_numbers).join(",").split(",")
+    @booked_seats = @show.bookings.where(status:"book").pluck(:seat_numbers).join(",").split(",")
   end
 
   def create
@@ -39,9 +39,15 @@ class BookingsController < ApplicationController
 
   def cancel
     booking = current_user.bookings.find(params[:id])
+    show = booking.show
 
     if booking.cancellable
+      # byebug
+      selected_length = booking.seat_numbers.split(",").length
       byebug
+      total_available_seats = selected_length + show.available_seats
+      seat_price = show.seat_price.to_i
+      show.update!(available_seats: total_available_seats, seat_price: seat_price)
       booking.update(status: "cancelled")
       redirect_to bookings_path, notice: "Booking cancel"
     else

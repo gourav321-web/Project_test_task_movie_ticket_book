@@ -40,7 +40,7 @@
           </td>
 
           <td>
-            <% if booking.status == "book"%>
+            <% if booking.status == "book" and booking.cancellable%>
               <%= button_to "Cancel",
                   cancel_booking_path(booking),
                   method: :patch,

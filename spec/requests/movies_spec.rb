@@ -51,14 +51,14 @@ RSpec.describe "Movies", type: :request do
     end
   end
 
-  # describe "GET /movies/:id" do
-  #   let(:movie) { create(:movie, title: "border 2", description: "23rd jan", duration: 240) }
+  describe "GET /movies/:id" do
+    let(:movie) { create(:movie, title: "border 2", description: "23rd jan", duration: 240) }
 
-  #   it "shows movie details" do
-  #     get movie_path(movie)
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
+    it "shows movie details" do
+      get movie_path(movie)
+      expect(response).to have_http_status(:ok)
+    end
+  end
 
   describe "GET /movies/:id/edit" do
     let(:movie) { create(:movie, title: "border 2", description: "23rd jan", duration: 240) }
