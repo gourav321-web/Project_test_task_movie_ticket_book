@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_forgery_protection
 
   def new
-
+    # byebug
   end
 
   def create
@@ -23,13 +23,6 @@ class SessionsController < ApplicationController
     cookies.delete(:jwt)
     redirect_to login_path, notice: "Logged-out"
   end
-
-  private
-
-  def session_params
-    params.require(:session).permit(:email, :password)
-  end
-
 end
 
 

@@ -60,7 +60,7 @@
 #     it "creates a new user" do
 #       expect {
 #         post :create, params: valid_params
-#       }.to change(User, :count).by(1)
+#       }
 #     end
 
 #     it "redirects to the created user" do
@@ -77,3 +77,79 @@
 #     end
 #   end
 # end
+
+
+require "rails_helper"
+
+RSpec.describe "Users", type: :request do
+  let(:password) { "Gourav@12" }
+
+  let(:user) do
+    create(
+      :user,
+      password: password,
+      password_confirmation: password
+    )
+  end
+
+  describe "GET /register" do
+    it "renders signup page" do
+      get register_path
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "POST /users" do
+    context "with valid params" do
+      it "creates user and set jwt cookie" do
+        post users_path, params: {
+          user: {
+            name: "Test User",
+            email: "testuser@example.com",
+            password: password,
+            password_confirmation: password
+          }
+        }
+
+        expect(response).to redirect_to(movies_path)
+        expect(cookies[:jwt]).to be_present
+      end
+    end
+
+    context "with invalid params" do
+      it "does not create user" do
+        expect {
+          post users_path, params: {
+            user: {
+              name: "",
+              email: "",
+              password: ""
+            }
+          }
+        }.not_to change(User, :count)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
+  describe "GET /users/:id/edit" do
+    it "renders edit page" do
+      get edit_user_path(user)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "PATCH /users/:id" do
+    it "updates user profile" do
+      patch user_path(user), params: {
+        user: {
+          name: "Updated Name"
+        }
+      }
+
+      expect(response).to redirect_to(movies_path)
+      expect(user.reload.name).to eq("Updated Name")
+    end
+  end
+end

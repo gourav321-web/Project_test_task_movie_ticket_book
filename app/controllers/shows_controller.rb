@@ -4,15 +4,16 @@ class ShowsController < ApplicationController
   before_action :set_show, only: [:edit, :update, :destroy]
 
   def new
+    # byebug
     @show = @movie.shows.new
   end
 
   def create
     @show = @movie.shows.new(show_params)
     @show.total_seats = @show.available_seats
-
+    byebug
     if @show.save
-
+      # byebug
       redirect_to movie_path(@movie), notice: "Show created successfully"
     else
       render :new, status: :unprocessable_entity
@@ -20,9 +21,11 @@ class ShowsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+    byebug
     @show.total_seats = @show.available_seats
     if @show.update(show_params)
       redirect_to movie_path(@movie),notice: "Show details were successfully updated."
