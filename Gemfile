@@ -109,3 +109,8 @@ group :test do
   # this gem add when i face problem with callback 
   gem 'shoulda-callback-matchers'
 end
+
+gem 'whenever', require: false
+
+
+gem 'sidekiq-cron'

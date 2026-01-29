@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     @booking = @show.bookings.new(booking_params)
     @booking.user = current_user
     @booking.status = "book"
+    @booking.show_time = @show.show_time
     if @booking.save
     
       @show      = @booking.show

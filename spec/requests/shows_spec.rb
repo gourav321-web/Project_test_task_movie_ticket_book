@@ -65,6 +65,39 @@ RSpec.describe "Shows", type: :request do
       expect(response).to redirect_to(movie_path(movie))
     end
   end
+
+  describe "DELETE /show/:id" do
+
+    it "deletes show" do
+      byebug
+      expect {
+        delete movie_show_path(movie, show)
+      }.to change(Show, :count).by(-1)
+
+      byebug
+      expect(response).to redirect_to(movies_path)
+    end
+  end
+
+  describe "GET /shows/search" do
+
+    it "searches show by time and date" do
+      get search_show_movie_shows_path(movie), params: { key: date_time }
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "searches show by time" do
+      get search_show_movie_shows_path(movie), params: { key: "4, 17, 41" }
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "searches show by date" do
+      get search_show_movie_shows_path(movie), params: { key: "2021, 10, 23" }
+      expect(response).to have_http_status(:ok)
+    end
+
+
+  end
 end
 
 

@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     end
     resources :shows do
       collection do
-        get 'search_show'  
+        get 'search_show' 
+        get 'import_show'
       end
     end
   end

@@ -1,0 +1,5 @@
+update_booking_statuses:
+  cron: "*/5 * * * *" # Runs in every 5 minutes
+  class: "UpdateBookingStatusJob"
+  args: []
+  queue: default

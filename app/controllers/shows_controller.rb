@@ -40,6 +40,7 @@ class ShowsController < ApplicationController
   end
 
   def search_show
+    byebug
     @movie = Movie.find(params[:movie_id])
     @shows = @movie.shows.where("show_time >= ?", Time.current)
 
@@ -57,6 +58,14 @@ class ShowsController < ApplicationController
     else
       flash.now[:notice] = "Please select date or time"
     end
+  end
+
+  def import_show
+    Show.import_from_csv(@movie[:id])
+    redirect_to movie_path(@movie), notice: "Shows imported successfully!"
+    rescue StandardError => e
+      byebug
+    redirect_to movie_path(@movie), alert: "Import failed: #{e.message}"
   end
 
 

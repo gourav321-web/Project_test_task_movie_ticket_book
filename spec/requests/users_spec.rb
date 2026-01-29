@@ -85,11 +85,7 @@ RSpec.describe "Users", type: :request do
   let(:password) { "Gourav@12" }
 
   let(:user) do
-    create(
-      :user,
-      password: password,
-      password_confirmation: password
-    )
+    create(:user,password: password,password_confirmation: password)
   end
 
   describe "GET /register" do
@@ -102,14 +98,7 @@ RSpec.describe "Users", type: :request do
   describe "POST /users" do
     context "with valid params" do
       it "creates user and set jwt cookie" do
-        post users_path, params: {
-          user: {
-            name: "Test User",
-            email: "testuser@example.com",
-            password: password,
-            password_confirmation: password
-          }
-        }
+        post users_path, params: {user: {name: "Test User",email: "testuser@example.com",password: password,password_confirmation: password}}
 
         expect(response).to redirect_to(movies_path)
         expect(cookies[:jwt]).to be_present
@@ -119,14 +108,7 @@ RSpec.describe "Users", type: :request do
     context "with invalid params" do
       it "does not create user" do
         expect {
-          post users_path, params: {
-            user: {
-              name: "",
-              email: "",
-              password: ""
-            }
-          }
-        }.not_to change(User, :count)
+          post users_path, params: {user: {name: "",email: "",password: ""}}}.not_to change(User, :count)
 
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -142,11 +124,7 @@ RSpec.describe "Users", type: :request do
 
   describe "PATCH /users/:id" do
     it "updates user profile" do
-      patch user_path(user), params: {
-        user: {
-          name: "Updated Name"
-        }
-      }
+      patch user_path(user), params: {user: {name: "Updated Name"}}
 
       expect(response).to redirect_to(movies_path)
       expect(user.reload.name).to eq("Updated Name")
