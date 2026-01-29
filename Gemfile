@@ -104,7 +104,7 @@ end
 
 
 group :test do
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-matchers', '~> 7.0'
   
   # this gem add when i face problem with callback 
   gem 'shoulda-callback-matchers'
