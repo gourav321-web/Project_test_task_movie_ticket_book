@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
       if reminder_time > Time.current
         # byebug
         # SendShowReminderJob.set
-        byebug
+        # byebug
         # SendShowReminderJob.set(wait: 1.minutes).perform_later(@booking.id)
         SendShowReminderJob.set(wait_until: reminder_time).perform_later(@booking.id)
 
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
     if booking.cancellable
       # byebug
       selected_length = booking.seat_numbers.split(",").length
-      byebug
+      # byebug
       total_available_seats = selected_length + show.available_seats
       seat_price = show.seat_price.to_i
       show.update!(available_seats: total_available_seats, seat_price: seat_price)

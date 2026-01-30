@@ -14,7 +14,7 @@ class Booking < ApplicationRecord
   after_create :bookingmail
 
   def cancellable
-    byebug
+    # byebug
     Time.current < (show.show_time - 2.hours)
   end
 
@@ -52,7 +52,7 @@ class Booking < ApplicationRecord
   end
 
   def bookingmail
-    byebug
+    # byebug
     UserMailer.booking_confirmation(self).deliver_later
   end
 end

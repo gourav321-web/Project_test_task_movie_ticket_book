@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
   def index
-    byebug
+    # byebug
     @movies = Movie.all
   end
   

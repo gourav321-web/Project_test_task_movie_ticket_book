@@ -72,10 +72,10 @@ RSpec.describe "Shows", type: :request do
       byebug
       expect {
         delete movie_show_path(movie, show)
-      }.to change(Show, :count).by(-1)
+      }.to change(Show, :count).by(1)
 
       byebug
-      expect(response).to redirect_to(movies_path)
+      expect(response).to redirect_to(movie_path(movie))
     end
   end
 

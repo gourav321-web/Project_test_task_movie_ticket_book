@@ -35,12 +35,12 @@ class ShowsController < ApplicationController
   end
 
   def destroy
+    byebug
     @show.destroy
     redirect_to movie_path(@movie), notice: "Show deleted successfully"
   end
 
   def search_show
-    byebug
     @movie = Movie.find(params[:movie_id])
     @shows = @movie.shows.where("show_time >= ?", Time.current)
 

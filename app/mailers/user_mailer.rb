@@ -20,6 +20,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @show = show
     # # @show = show
+    byebug
     mail(to: email, subject: "Reminder: Your show is in 1 hour!")
   end
 end
